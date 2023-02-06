@@ -1,0 +1,22 @@
+.image{
+    background-color: silver;
+    height: 20rem;
+    width: 15rem;
+}
+.container-s{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 2rem;
+    padding: 2rem;
+}
+.s2, .s1, .s3, .s4{
+    margin-left: 10px;
+    padding: 10px;
+    /* border: black solid 1px; */
+}
+.col1, .col2{
+    height: 1.5rem;
+    width: 10rem;
+    margin-top: 1rem;
+    background-color: silver;
+}
