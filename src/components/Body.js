@@ -23,6 +23,7 @@ const Body = () => {
       const json = await data.json();
       console.log(json);
       setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+      // console.log(json?.data?.cards[2]?.data?.data?.cards)
       setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
 
@@ -37,14 +38,14 @@ const Body = () => {
 
     return (restaurants.length<1) ? <Shimmer/> : (
       <>
-      <input className="inputText" placeholder="Search" type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}} ></input>
-      <button className="search-btn" onClick={() => 
+      <input className=" bg-slate-100 p-3 rounded-md ml-4 focus:bg-gree" placeholder="Search" type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}} ></input>
+      <button className="p-3 m-4 bg-purple-100 rounded-md hover:bg-green-500" onClick={() => 
       {
         const data = filterData(searchText,restaurants)
         setFilteredRestaurants(data)
       }
       }>Search</button>
-      <div className='container'>
+      <div className='flex flex-wrap'>
         {
           filteredRestaurants.map((restaurant) =>{
             return  <Link to ={'/restaurantMenu/'+restaurant.data.id} key={restaurant.data.id}>

@@ -8,25 +8,27 @@ const RestaurantMenu = () =>{
     const params = useParams();
     const resID = params;
     const idNo = resID.id;
+    console.log(idNo);
     const restaurant = useRestaurantMenu(idNo);
+    console.log(restaurant)
     
     
     return (!restaurant) ? <Shimmer/>:(
         <>
             <div>
-                <h1>{restaurant.name}</h1>
-                <img src={IMG_CDN_URL+restaurant.cloudinaryImageId}/>
-                <h2>City - {restaurant.city}</h2>
-                <h2>Average Rating - {restaurant.avgRating}</h2>
+                <h1>{restaurant?.cards[0]?.card?.card?.info?.name}</h1>
+                <img src={IMG_CDN_URL+restaurant?.cards[0]?.card?.card?.info?.cloudinaryImageId}/>
+                <h2>City - {restaurant?.cards[0]?.card?.card?.info?.city}</h2>
+                <h2>Average Rating - {restaurant?.cards[0]?.card?.card?.info?.avgRatingString}</h2>
             </div>
             <div>
                 <h1>MENU</h1>
                 
                 <ul>
-                    {Object.values(restaurant?.menu?.items).map((item)=>(
-                        <li key={item?.id}>{item?.name}</li>
+                    {Object.values(restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards).map((item)=>(
+                        <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
                     ))}
-                </ul>
+                </ul> 
             </div>
         </>
     );
